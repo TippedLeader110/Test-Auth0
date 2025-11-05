@@ -25,16 +25,17 @@
       // const userId = encodeURIComponent(user.sub);
       // const name = encodeURIComponent(user.name || '');
 
-      if (email == ""){
+      if (email == "") {
         alert(" NUN ");
       }
       else {
         alert("Email : " + email)
+
+        const typeformURL = `https://form.typeform.com/to/U25ped1x?&email=${email}`;
+        window.location.href = typeformURL;
       }
 
 
-      const typeformURL = `https://form.typeform.com/to/U25ped1x?&email=${email}`;
-      window.location.href = typeformURL;
     }
 
     redirectToTypeform();
