@@ -9,15 +9,20 @@ Mengalihkan ke typeform
 <body>
   <script>
     alert("Loading");
+
+
     const auth0 = new Auth0Client({
       domain: 'dev-js0sbf56umeruxvl.us.auth0.com',
       client_id: 'RSrshTPVJY80ZoV19jGVWwEgMHxfrrO2',
+      redirect_uri: 'https://tippedleader110.github.io/Test-Auth0/redirect_to_typeform.html',
+      cacheLocation: 'localstorage',
+      useRefreshTokens: True,
     });
 
     async function redirectToTypeform() {
       const isAuthenticated = await auth0.isAuthenticated();
       if (!isAuthenticated) {
-        alert(isAuthenticated)
+        // alert(isAuthenticated)
         await auth0.loginWithRedirect();
         return;
       }
