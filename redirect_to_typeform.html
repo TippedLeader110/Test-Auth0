@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Redirecting to Typeform...</title>
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
+</head>
+<body>
+  <script>
+    const auth0 = new Auth0Client({
+      domain: 'YOUR_AUTH0_DOMAIN',
+      client_id: 'YOUR_CLIENT_ID',
+    });
+
+    async function redirectToTypeform() {
+      const isAuthenticated = await auth0.isAuthenticated();
+      if (!isAuthenticated) {
+        await auth0.loginWithRedirect();
+        return;
+      }
+
+      const user = await auth0.getUser();
+      const email = encodeURIComponent(user.email);
+      const userId = encodeURIComponent(user.sub);
+      const name = encodeURIComponent(user.name || '');
+
+      const typeformURL = `https://form.typeform.com/to/U25ped1x?first_name=${firstName}&last_name=${lastName}&email=${email}`;
+      window.location.href = typeformURL;
+    }
+
+    redirectToTypeform();
+  </script>
+</body>
+</html>
